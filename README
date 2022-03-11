@@ -1,0 +1,27 @@
+# paloalto-api
+#Python module that simplifies interacting with Palo Alto by providing XML and REST API functions as well as some other methods.
+
+username = "username"
+password = "password"
+hostname = "hostname"
+
+#Create an instance for your firewall
+firewall=PaloAlto(username,password,hostname)
+
+#Generate an API key for use in API calls
+results = firewall.gen_api_key()
+
+results = firewall.xml_api(TYPE, ACTION, XPATH, CONTENT)
+
+#results['result'] contains true or false to indicate success, results['message'] to tell you what happened, and if it was successful, ['url'] has the URL used for the API request, ['text'] has the text of the response, and ['json'] has the JSON form of the response in dictionary format.
+
+results = firewall.rest_api(PATH, DATA, METHOD)
+
+#results['result'] contains true or false to indicate success, results['message'] to tell you what happened, and if it was successful, ['url'] has the URL used for the API request, ['text'] has the text of the response, and ['json'] has the JSON form of the response in dictionary format.
+
+firewall.commit()
+#commit the config
+
+firewall.revert()
+#revert your changes
+
